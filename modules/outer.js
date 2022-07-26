@@ -1,14 +1,19 @@
+
 let t='hello world';
 let h=screen.height;
 let w=screen.width;
-let s=w/10;
+let s=w/30;
+
+//vconsole
+let vc=true;
+let vconsole=new window.VConsole();
 //icons
 let icons={
     left:[],
     right:[],
     leftAdd:function(name,click){//name need to be consistent with the src, which is in the imgs/icon and is a png img.
         let i=this.left.push(document.createElement('img'))-1;
-        this.left[i].src='../imgs/icon/'+name+'.png';
+        this.left[i].src=iconSrc[name];
 
         this.left[i].width=this.left[i].height=s;
         document.body.appendChild(this.left[i]);
@@ -20,7 +25,7 @@ let icons={
     },
     rightAdd:function(name,click){//name need to be consistent with the src, which is in the imgs/icon and is a png img.
         let i=this.right.push(document.createElement('img'))-1;
-        this.right[i].src='../imgs/icon/'+name+'.png';
+        this.right[i].src=iconSrc[name];
         this.right[i].width=this.right[i].height=s;
         document.body.appendChild(this.right[i]);
         this.right[i].style.position='fixed';
@@ -55,3 +60,9 @@ function hp(){
     console.log(t)
 }
 icons.leftAdd('help',hp);
+//play
+let play=true;
+function pl(){
+    console.log(t);
+}
+icons.rightAdd('play',pl);

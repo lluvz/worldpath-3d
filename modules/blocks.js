@@ -1,0 +1,6 @@
+//initiate
+
+//animation
+function aniBlocks(){
+
+}
