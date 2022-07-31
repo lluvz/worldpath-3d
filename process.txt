@@ -1,0 +1,2 @@
+1. there is one more thing to solve: the fullscreen problem on iPad.
+    maybe using webkitRequestfullscreen will solve it.

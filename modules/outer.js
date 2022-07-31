@@ -66,3 +66,10 @@ function pl(){
     console.log(t);
 }
 icons.rightAdd('play',pl);
+let buttonBorder=document.getElementById('buttonBorder');
+buttonBorder.width=3*s;
+buttonBorder.height=s;
+
+let playContainer=document.getElementById('playContainer');
+
+
