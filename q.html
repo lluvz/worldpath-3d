@@ -8,12 +8,12 @@
 </head>
 <body>
     <div id="playContainer">
-        <div id="play" class="button">
+        <div id="playButton" class="button">
             <img src="imgs/icon/button.png" class="buttonBorder">
             <p class="buttonText">Play</p>
         </div>
         <div id="playOption">
-            <div id='new' class='button'>
+            <div id='newGame' class='button'>
                 <img src="imgs/icon/button.png" class="buttonBorder">
                 <p class="buttonText">New</p>
             </div>
@@ -32,6 +32,12 @@
 
         </div>
     </div>
+    <div id="properties">
+        <p id="fps" class="dataText"></p>
+        <br>
+        <p id="time" class="dataText"></p>
+    </div>
+    <script src="libraries/pixi.js"></script>
     <script src="libraries/three.js"></script>
     <script src="modules/preload.js"></script>
     <script src='modules/outer.js'></script>

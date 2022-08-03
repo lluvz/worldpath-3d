@@ -4,6 +4,9 @@ let camera=new THREE.PerspectiveCamera(75,w/h,0.1,1000);
 let renderer=new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth,window.innerHeight);
 document.body.appendChild(renderer.domElement);
+renderer.domElement.oncontextmenu=function(e){
+    e.preventDefault();
+}
 //test
 const geometry = new THREE.BoxGeometry( 70, 70, 70 );
 const material = new THREE.MeshBasicMaterial( { color: 0xffaa00 } );

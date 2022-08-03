@@ -20,6 +20,9 @@ function initBlocks(){
         }
     }
 }
+function drawBlocks(){
+    
+}
 function blockInitiate(){
     
 }

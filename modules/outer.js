@@ -3,8 +3,8 @@ let h=screen.height;
 let w=screen.width;
 let s=w/30;
 //vconsole
-let vc=true;
-let vconsole=new window.VConsole();
+//let vc=true;
+//let vconsole=new window.VConsole();
 //icons
 let icons={
     left:[],
@@ -37,14 +37,12 @@ let icons={
 let fullscreen=false;
 function fs(){
     if(fullscreen==false){
-        renderer.setSize(w,h)
         document.body.requestFullscreen();
         fullscreen=true;
     }
     else{
         document.exitFullscreen();
         fullscreen=false;
-        renderer.setSize(window.innerWidth,window.innerHeight)
     }
 }
 icons.leftAdd('fullscreen',fs);
@@ -58,7 +56,6 @@ icons.rightAdd('set',sts);
 let help=true;
 function hp(){
     console.log(t)
-    renderer.setSize(window.innerWidth,window.innerHeight)
 }
 icons.leftAdd('help',hp);
 //play
@@ -68,16 +65,20 @@ function pl(){
 }
 icons.rightAdd('play',pl);
 
-let play=document.getElementById('play');
+let playButton=document.getElementById('playButton');
 let playOption=document.getElementById('playOption');
-let cancelPlay=document.getElementById('cancelPlay')
-playContainer.onclick=function(){
-    play.style.display='none';
+let cancelPlay=document.getElementById('cancelPlay');
+let newGame=document.getElementById('newGame');
+playButton.onclick=function(){
     playOption.style.display='block';
+    playButton.style.display='none';
 }
 cancelPlay.onclick=function(){
-    play.style.display='block';
     playOption.style.display='none';
+    playButton.style.display='block';
+}
+newGame.onclick=function(){
+    
 }
 
 

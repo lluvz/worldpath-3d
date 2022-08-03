@@ -1,2 +1,9 @@
-1. there is one more thing to solve: the fullscreen problem on iPad.
-    maybe using webkitRequestfullscreen will solve it.
+1.  there is one more thing to solve: the fullscreen problem on iPad.
+    maybe using webkitRequestfullscreen will solve it.--partly solved
+    lacking a refresh button.--solved
+2.  Click cancel but there's no change.--solved
+3.  clean up the w,h & s.
+4.  prevent default right click is added.
+    if three.js has its own way, this has to be removed.
+5.  Now let's get even more modlarizational.
+    Let the background sky(maybe alone with the lanscapes) canvas getting into a texture package.
