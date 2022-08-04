@@ -48,8 +48,16 @@ function fs(){
 icons.leftAdd('fullscreen',fs);
 //sets
 let set=false;
+let settingContainer=document.getElementById('settingContainer')
 function sts(){
-    console.log(t)
+    if(set==false){
+        settingContainer.style.display='block';
+        set=true;
+    }
+    else{
+        settingContainer.style.display='none';
+        set=false;
+    }
 }
 icons.rightAdd('set',sts);
 //help

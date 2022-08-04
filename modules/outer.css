@@ -5,6 +5,10 @@ body{
 p{
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
+span:{
+    font-family: Georgia;
+    color: aliceblue;
+}
 
 /*playground*/
 #playContainer{
@@ -38,6 +42,12 @@ p{
 }
 
 /*settings*/
+#settingContainer{
+    display:none;
+    position:fixed;
+    top:230px;
+    left:110px;
+}
 
 /*properties*/
 #properties{
