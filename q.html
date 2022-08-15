@@ -29,7 +29,10 @@
     </div>
     <div id="settingContainer">
         <div id="systemSettings">
-            <input type="checkbox" id='fpsSetting'><span>FPS</span><br>
+            <input type="checkbox" id='showFPS'><span>show FPS</span><br>
+            <input type="checkbox" id="showTime"><span>show time</span><br>
+            <input type="checkbox" id="showConsole"><span>show console</span><br>
+            <input type="checkbox" id="showPhysics"><span>show raw phycics</span>
         </div>
     </div>
     <div id="properties">
@@ -37,13 +40,33 @@
         <br>
         <p id="time" class="dataText"></p>
     </div>
+    <!--<script src="libraries/babylon.js"></script>-->
     <script src="libraries/pixi.js"></script>
     <script src="libraries/three.js"></script>
+    <script src="libraries/gpu-browser.js"></script>
+
+    <!--three modules-->
+    <script src="libraries/threeModules/ConvolutionShader.js"></script>
+    <script src="libraries/threeModules/CopyShader.js"></script>
+    <script src="libraries/threeModules/LuminosityHighPassShader.js"></script>
+    <script src="libraries/threeModules/EffectComposer.js"></script>
+    <script src="libraries/threeModules/lensflare.js"></script>
+    <!--<script src="libraries/threeModules/Pass.js"></script>-->
+    <script src="libraries/threeModules/MaskPass.js"></script>
+    <script src="libraries/threeModules/RenderPass.js"></script>
+    <script src="libraries/threeModules/ShaderPass.js"></script>
+    <script src="libraries/threeModules/UnrealBloomPass.js"></script>
+
+    <!--physics modules-->
+    <script src="modules/physics/temperature.js"></script>
+    <!---->
+    
     <script src="modules/preload.js"></script>
     <script src='modules/outer.js'></script>
     <script src="modules/canvasSetup.js"></script>
     <script src="modules/background.js"></script>
     <script src="modules/blocks.js"></script>
+    <script src="modules/mouse.js"></script>
     <script src="modules/animation.js"></script>
 </body>
 </html>

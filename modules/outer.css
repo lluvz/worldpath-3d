@@ -5,7 +5,7 @@ body{
 p{
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
-span:{
+span{
     font-family: Georgia;
     color: aliceblue;
 }
@@ -45,8 +45,15 @@ span:{
 #settingContainer{
     display:none;
     position:fixed;
-    top:230px;
-    left:110px;
+    padding-left:3vw;
+    padding-top:3vh;
+    top:17vh;
+    left:7vw;
+    width:86vw;
+    height:77vh;
+    background-color:rgb(176, 196, 222, 0.3);
+    border-style:inset;
+    border-color:aliceblue;
 }
 
 /*properties*/

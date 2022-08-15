@@ -33,6 +33,7 @@ let icons={
         this.right[i].alt=name;
     }
 }
+
 //fullscreen
 let fullscreen=false;
 function fs(){
@@ -46,9 +47,10 @@ function fs(){
     }
 }
 icons.leftAdd('fullscreen',fs);
+
 //sets
 let set=false;
-let settingContainer=document.getElementById('settingContainer')
+let settingContainer=document.getElementById('settingContainer');
 function sts(){
     if(set==false){
         settingContainer.style.display='block';
@@ -59,13 +61,26 @@ function sts(){
         set=false;
     }
 }
+//show fps
+let fpsSetting=document.getElementById('showFPS');
+fpsSetting.onclick=function(){
+    if(fpsSetting.checked==true){
+        fpsElement.style.display='block';
+    }
+    else{
+        fpsElement.style.display='none';
+    }
+}
 icons.rightAdd('set',sts);
+//show time
+
 //help
 let help=true;
 function hp(){
     console.log(t)
 }
 icons.leftAdd('help',hp);
+
 //play
 let play=true;
 function pl(){

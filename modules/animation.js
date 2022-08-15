@@ -13,15 +13,24 @@ let day;
 let hour;
 let minite;
 let second;
-let startHour=7;
+let startHour=5;
 totalTime+=startHour*2500*realTimePerDay;
 
+//pause
+let paused=false;
+let pausingTime;
+function pause(){
+    paused=true;
+    pausingTime=new Date().getTime();
+}
+function restart(){
+    paused=false;
+    pausingTime=new Date().getTime()-pausingTime;
+    totalTime-=pausingTime;
+    animate();
+}
+
 function animate(){
-    requestAnimationFrame(animate);
-
-    //canvas size
-    renderer.setSize(pixiApp.view.width,pixiApp.view.height);
-
     //time & fps
     //dt
     thisTime=new Date().getTime();
@@ -41,6 +50,10 @@ function animate(){
     //animations
     aniBackground();
     aniBlocks();
-    renderer.render(scene,camera);
+    raycast();
+    composer.render();
+    if(paused==false){
+        requestAnimationFrame(animate);
+    }
 }
 animate();

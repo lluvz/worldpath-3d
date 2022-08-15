@@ -7,4 +7,7 @@
     if three.js has its own way, this has to be removed.
 5.  Now let's get even more modlarizational.
     Let the background sky(maybe alone with the lanscapes) canvas getting into a texture package.
-6.  Problem: cannot change input text style.
+6.  Problem: cannot change input text style.--solved
+7.  Problem: fps checkbox auto.
+8.  Make settings a adding function?
+9.  New findings: scaling will change pivot. 
