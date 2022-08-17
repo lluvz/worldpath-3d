@@ -51,7 +51,6 @@ function aniBackground(){
         bgSrc.pureColor.tint='0x00'+parseInt((hour-5.5)/2*0x37).toString(16)+parseInt(0x11+(hour-5.5)/2*238).toString(16);
         bgSrc.gradient.alpha=hour-5.5;
         bgSrc.stars.alpha=0.7-(hour-5.5)*0.35;
-        sunMaterial.color=sunlight.color=new THREE.Color((0x775500*(hour-5.5)).toString(16))
     }
     else if(hour>6.5 && hour <7.5){
         bgSrc.pureColor.tint='0x00'+parseInt((hour-5.5)/2*0x37).toString(16)+parseInt(0x11+(hour-5.5)/2*238).toString(16);
@@ -70,13 +69,11 @@ function aniBackground(){
         bgSrc.pureColor.tint='0x00'+parseInt((19.5-hour)/2*0x37).toString(16)+parseInt(0x11+(19.5-hour)/2*238).toString(16);
         bgSrc.gradient.alpha=(hour-17.5)*0.7;
         bgSrc.stars.alpha=(hour-17.5)*0.35;
-        sunlight.color=0xffff77+0x88a877*(hour-18.5)
     }
     else if(hour>18.5 && hour<19.5){
         bgSrc.pureColor.tint='0x00'+parseInt((19.5-hour)/2*0x37).toString(16)+parseInt(0x11+(19.5-hour)/2*238).toString(16);
         bgSrc.gradient.alpha=(19.5-hour)*0.7;
         bgSrc.stars.alpha=(hour-17.5)*0.35;
-        sunlight.color=(19.5-hour)*0x775700
     }
     else{
         bgSrc.pureColor.tint='0x000011';

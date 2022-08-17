@@ -71,7 +71,6 @@ fpsSetting.onclick=function(){
 icons.rightAdd('set',sts);
 //show time
 let timeShowing=document.getElementById('showTime')
-let timeElement=document.getElementById('time');
 timeShowing.onclick=function(){
     if(timeShowing.checked==true){
         timeElement.style.display='block';
