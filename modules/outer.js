@@ -2,9 +2,6 @@ let t='hello world';
 let h=screen.height;
 let w=screen.width;
 let s=w/30;
-//vconsole
-//let vc=true;
-//let vconsole=new window.VConsole();
 //icons
 let icons={
     left:[],
@@ -38,11 +35,11 @@ let icons={
 let fullscreen=false;
 function fs(){
     if(fullscreen==false){
-        document.body.requestFullscreen();
+        document.body.webkitRequestFullscreen();
         fullscreen=true;
     }
     else{
-        document.exitFullscreen();
+        document.webkitExitFullscreen();
         fullscreen=false;
     }
 }
@@ -73,6 +70,28 @@ fpsSetting.onclick=function(){
 }
 icons.rightAdd('set',sts);
 //show time
+let timeShowing=document.getElementById('showTime')
+let timeElement=document.getElementById('time');
+timeShowing.onclick=function(){
+    if(timeShowing.checked==true){
+        timeElement.style.display='block';
+    }
+    else{
+        timeElement.style.display='none';
+    }
+}
+//show vconsole
+let vconsole=new window.VConsole();
+let vconsoleSetting=document.getElementById('showConsole');
+vconsoleSetting.onclick=function(){
+    if(vconsoleSetting.checked==true){
+        vconsole=new window.VConsole();
+    }
+    else{
+        vconsole.destroy();
+        vconsole=null;
+    }
+}
 
 //help
 let help=true;

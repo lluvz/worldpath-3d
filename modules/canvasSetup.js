@@ -16,7 +16,7 @@ composer.addPass(bloomPass)
 
 //test
 const geometry = new THREE.BoxGeometry( 70, 70, 70 );
-const material = new THREE.MeshStandardMaterial( { color: 0xffffff } );
+const material = new THREE.MeshStandardMaterial( { color: 0xffffff} );
 const cube = new THREE.Mesh( geometry, material );
 scene.add( cube );
 
