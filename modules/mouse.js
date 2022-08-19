@@ -13,7 +13,7 @@ function raycast(){
         }
     }
     intersects=raycaster.intersectObjects(scene.children);
-    for(let i=0;i<intersects.length;i++){
-        intersects[i].object.material.color.set(0xff0000);
+    if(intersects[0]!=null){
+        intersects[0].object.material.color.set(0xff0000);
     }
 }

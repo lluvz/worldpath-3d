@@ -15,6 +15,7 @@ let bloomPass=new THREE.UnrealBloomPass({x:window.innerWidth,y:window.innerHeigh
 composer.addPass(bloomPass)
 
 //test
+
 const geometry = new THREE.BoxGeometry( 70, 70, 70 );
 const material = new THREE.MeshStandardMaterial( { color: 0xffffff} );
 const cube = new THREE.Mesh( geometry, material );
@@ -22,6 +23,7 @@ scene.add( cube );
 
 camera.position.z=777;
 camera.position.y=230;
+
 //size adjustment
 window.onresize=function(){
     renderer.setSize(window.innerWidth,window.innerHeight);

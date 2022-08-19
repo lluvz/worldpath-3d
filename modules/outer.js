@@ -80,7 +80,7 @@ timeShowing.onclick=function(){
     }
 }
 //show vconsole
-let vconsole=new window.VConsole();
+let vconsole;
 let vconsoleSetting=document.getElementById('showConsole');
 vconsoleSetting.onclick=function(){
     if(vconsoleSetting.checked==true){
@@ -119,7 +119,8 @@ cancelPlay.onclick=function(){
     playButton.style.display='block';
 }
 newGame.onclick=function(){
-    
+    initBlocks();
+    drawBlocks();
 }
 
 

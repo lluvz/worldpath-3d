@@ -31,6 +31,11 @@ function restart(){
 }
 
 function animate(){
+    //camera
+    camera.position.x=character.x;
+    camera.position.y=character.y+230;
+    camera.position.z=character.z+777;
+
     //time & fps
     //dt
     thisTime=new Date().getTime();
@@ -48,6 +53,7 @@ function animate(){
     timeElement.innerHTML='Time: '+parseInt(day)+'d '+parseInt(hour)+':'+parseInt(minite)+':'+parseInt(second);
 
     //animations
+    characterMovement();
     aniBackground();
     aniBlocks();
     raycast();
