@@ -154,3 +154,9 @@ moveButton.onpointerup=function(){
     moveButton.style.left='7vw';
     moveButton.style.bottom='27vh';
 }
+moveButton.ontouchend=function(){
+    moveButtonPointerDown=false;
+    moveButton.style.top=null;
+    moveButton.style.left='7vw';
+    moveButton.style.bottom='27vh';
+}
