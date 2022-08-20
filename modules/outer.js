@@ -139,6 +139,7 @@ newGame.onclick=function(){
 //mobile buttons
 let moveButton=document.getElementById('moveButton');
 let moveButtonPointerDown=false;
+/*
 moveButton.onpointerdown=function(){
     moveButtonPointerDown=true;
 }
@@ -153,6 +154,16 @@ moveButton.onpointerup=function(){
     moveButton.style.top=null;
     moveButton.style.left='7vw';
     moveButton.style.bottom='27vh';
+}
+*/
+moveButton.ontouchstart=function(){
+    moveButtonPointerDown=true;
+}
+moveButton.ontouchmove=function(){
+    if(moveButtonPointerDown){
+        moveButton.style.top=e.clientY-35+'px';
+        moveButton.style.left=e.clientX-35+'px';
+    }
 }
 moveButton.ontouchend=function(){
     moveButtonPointerDown=false;
