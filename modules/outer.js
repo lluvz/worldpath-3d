@@ -137,10 +137,20 @@ newGame.onclick=function(){
 }
 
 //mobile buttons
-let moveButtonContainer=document.getElementById('moveButtonContainer');
-moveButtonContainer.onpointerdown=function(e){
-    console.log(t);
+let moveButton=document.getElementById('moveButton');
+let moveButtonPointerDown=false;
+moveButton.onpointerdown=function(){
+    moveButtonPointerDown=true;
 }
-moveButtonContainer.onpointerup=function(){
-    console.log('up');
+moveButton.onpointermove=function(e){
+    if(moveButtonPointerDown){
+        moveButton.style.top=e.clientY-35+'px';
+        moveButton.style.left=e.clientX-35+'px';
+    }
+}
+moveButton.onpointerup=function(){
+    moveButtonPointerDown=false;
+    moveButton.style.top=null;
+    moveButton.style.left='7vw';
+    moveButton.style.bottom='27vh';
 }

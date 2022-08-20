@@ -77,13 +77,10 @@ span{
     font-size:x-large;
     opacity:0.7;
 }
-#moveButtonContainer{
+#moveButton{
     position:fixed;
     left:7vw;
     bottom:27vh;
-}
-#moveButton{
-    position:absolute;
     width:70px;
     height:70px;
     border-radius: 50%;
