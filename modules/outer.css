@@ -1,9 +1,10 @@
-body{
-    position:fixed;
-}
 /*total setting*/
 body{
     margin:0;
+    position:fixed;
+}
+canvas{
+    position:fixed;
 }
 p{
     font-family: Georgia, 'Times New Roman', Times, serif;
