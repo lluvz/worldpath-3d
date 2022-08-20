@@ -4,7 +4,11 @@ let intersects;
 window.addEventListener('pointermove',function(e){
     pointer.x=(e.clientX/window.innerWidth)*2-1;
     pointer.y=-(e.clientY/window.innerHeight)*2+1;
-})
+});
+window.addEventListener('pointerdown',function(e){
+    pointer.x=(e.clientX/window.innerWidth)*2-1;
+    pointer.y=-(e.clientY/window.innerHeight)*2+1;
+});
 function raycast(){
     raycaster.setFromCamera(pointer,camera);
     if(intersects!=null){

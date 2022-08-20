@@ -11,7 +11,7 @@ function initBlocks(){
             blocks[x][y]={};
             for(let z=0;z<cacheZ;z++){
                 blocks[x][y][z]={};
-                if(y<8){
+                if(y<9){
                     blocks[x][y][z].type='empty';
                 }
                 else{

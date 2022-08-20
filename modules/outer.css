@@ -40,6 +40,9 @@ span{
 #playOption{
     display:none;
 }
+#gameOption{
+    display:none;
+}
 
 /*settings*/
 #settingContainer{
@@ -64,4 +67,24 @@ span{
 }
 .dataText{
     color:aliceblue;
+}
+
+/*mobile buttons*/
+.mobileButton{
+    background-color:rgba(119, 136, 153, 0.3);
+    border-color: aliceblue;
+    color:aliceblue;
+    font-size:x-large;
+    opacity:0.7;
+}
+#moveButtonContainer{
+    position:fixed;
+    left:7vw;
+    bottom:27vh;
+}
+#moveButton{
+    position:absolute;
+    width:70px;
+    height:70px;
+    border-radius: 50%;
 }

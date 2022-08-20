@@ -100,16 +100,27 @@ function hp(){
 icons.leftAdd('help',hp);
 
 //play
-let play=true;
+let play=false;
 function pl(){
-    console.log(t);
+    if(!play){
+        playContainer.style.display='block';
+        gameOption.style.display='block';
+        play=true;
+    }
+    else{
+        playContainer.style.display='none';
+        gameOption.style.display='none';
+        play=false;
+    }
 }
 icons.rightAdd('play',pl);
 
+let playContainer=document.getElementById('playContainer');
 let playButton=document.getElementById('playButton');
 let playOption=document.getElementById('playOption');
 let cancelPlay=document.getElementById('cancelPlay');
 let newGame=document.getElementById('newGame');
+let gameOption=document.getElementById('gameOption');
 playButton.onclick=function(){
     playOption.style.display='block';
     playButton.style.display='none';
@@ -121,6 +132,15 @@ cancelPlay.onclick=function(){
 newGame.onclick=function(){
     initBlocks();
     drawBlocks();
+    playOption.style.display='none';
+    playContainer.style.display='none';
 }
 
-
+//mobile buttons
+let moveButtonContainer=document.getElementById('moveButtonContainer');
+moveButtonContainer.onpointerdown=function(e){
+    console.log(t);
+}
+moveButtonContainer.onpointerup=function(){
+    console.log('up');
+}
