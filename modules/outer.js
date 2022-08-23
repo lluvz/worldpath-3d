@@ -143,13 +143,13 @@ let moveButtonPointerDown=false;
 moveButton.onpointerdown=function(){
     moveButtonPointerDown=true;
 }
-moveButton.onpointermove=function(e){
+document.onpointermove=function(e){
     if(moveButtonPointerDown){
         moveButton.style.top=e.clientY-35+'px';
         moveButton.style.left=e.clientX-35+'px';
     }
 }
-moveButton.onpointerup=function(){
+document.onpointerup=function(){
     moveButtonPointerDown=false;
     moveButton.style.top=null;
     moveButton.style.left='7vw';
