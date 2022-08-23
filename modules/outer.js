@@ -139,7 +139,7 @@ newGame.onclick=function(){
 //mobile buttons
 let moveButton=document.getElementById('moveButton');
 let moveButtonPointerDown=false;
-/*
+
 moveButton.onpointerdown=function(){
     moveButtonPointerDown=true;
 }
@@ -155,7 +155,8 @@ moveButton.onpointerup=function(){
     moveButton.style.left='7vw';
     moveButton.style.bottom='27vh';
 }
-*/
+
+/*
 moveButton.ontouchstart=function(){
     moveButtonPointerDown=true;
 }
@@ -171,3 +172,4 @@ moveButton.ontouchend=function(){
     moveButton.style.left='7vw';
     moveButton.style.bottom='27vh';
 }
+*/
