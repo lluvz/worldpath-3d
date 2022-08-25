@@ -147,29 +147,15 @@ document.onpointermove=function(e){
     if(moveButtonPointerDown){
         moveButton.style.top=e.clientY-35+'px';
         moveButton.style.left=e.clientX-35+'px';
+        character.vx=(e.clientX-0.07*window.innerWidth)/1000;
+        character.vy=(-e.clientY+0.73*window.innerHeight)/1000;
     }
 }
 document.onpointerup=function(){
+    character.vx=0;
+    character.vy=0;
     moveButtonPointerDown=false;
     moveButton.style.top=null;
     moveButton.style.left='7vw';
     moveButton.style.bottom='27vh';
 }
-
-/*
-moveButton.ontouchstart=function(){
-    moveButtonPointerDown=true;
-}
-moveButton.ontouchmove=function(){
-    if(moveButtonPointerDown){
-        moveButton.style.top=e.clientY-35+'px';
-        moveButton.style.left=e.clientX-35+'px';
-    }
-}
-moveButton.ontouchend=function(){
-    moveButtonPointerDown=false;
-    moveButton.style.top=null;
-    moveButton.style.left='7vw';
-    moveButton.style.bottom='27vh';
-}
-*/
