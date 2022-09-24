@@ -57,8 +57,8 @@ function animate(){
     aniBackground();
     aniBlocks();
     raycast();
-    renderer.render(scene,camera);
-    //composer.render();
+    //renderer.render(scene,camera);
+    composer.render();
     if(paused==false){
         requestAnimationFrame(animate);
     }

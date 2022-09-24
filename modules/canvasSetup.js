@@ -8,13 +8,13 @@ renderer.domElement.oncontextmenu=function(e){
     e.preventDefault();
 }
 //post-processing
-/*
+
 let composer=new EffectComposer(renderer);
 let renderPass=new RenderPass(scene,camera);
 composer.addPass(renderPass);
 let bloomPass=new THREE.UnrealBloomPass({x:window.innerWidth,y:window.innerHeight},0.39)
 composer.addPass(bloomPass)
-*/
+
 
 //test
 
@@ -29,7 +29,7 @@ camera.position.y=230;
 //size adjustment
 window.onresize=function(){
     renderer.setSize(window.innerWidth,window.innerHeight);
-    //bloomPass.setSize(window.innerWidth,window.innerHeight);
+    bloomPass.setSize(window.innerWidth,window.innerHeight);
     camera.aspect=window.innerWidth/window.innerHeight;
     camera.updateProjectionMatrix();
 }
