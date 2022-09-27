@@ -11,13 +11,22 @@ let character={
     ay:0,
     az:0
 }
+let mainCharacterV={
+    vxW:0,
+    vxA:0,
+    vxS:0,
+    vxD:0,
+    vzW:0,
+    vzA:0,
+    vzS:0,
+    vzD:0,
+}
 function characterMovement(){
+    character.vx=character.ax*dt+mainCharacterV.vxW+mainCharacterV.vxA+mainCharacterV.vxS+mainCharacterV.vxD;
+    character.vy+=character.ay*dt;
+    character.vz=character.az*dt+mainCharacterV.vzW+mainCharacterV.vzA+mainCharacterV.vzS+mainCharacterV.vzD;
 
-    character.vx=character.vx+character.ax*dt;
-    character.vy=character.vy+character.ay*dt;
-    character.vz=character.vz+character.az*dt;
-
-    character.x=character.x+character.vx*dt;
-    character.y=character.y+character.vy*dt;
-    character.z=character.z+character.vz*dt;
+    character.x+=character.vx*dt;
+    character.y+=character.vy*dt;
+    character.z+=character.vz*dt;
 }

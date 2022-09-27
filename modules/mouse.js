@@ -1,3 +1,4 @@
+//raycast
 const raycaster=new THREE.Raycaster();
 const pointer=new THREE.Vector2();
 let intersects;
@@ -21,3 +22,21 @@ function raycast(){
         intersects[0].object.material.color.set(0xff0000);
     }
 }
+
+//mouse rotating the view
+let mouseSpeed=0.001;
+renderer.domElement.addEventListener('mousedown',function(){
+    renderer.domElement.requestPointerLock();
+})
+renderer.domElement.addEventListener('mousemove',function(e){
+    if(document.pointerLockElement!==null){
+        camera.rotation.y -= e.movementX*mouseSpeed;
+        camera.rotation.x -= e.movementY*mouseSpeed;
+        if(camera.rotation.x>Math.PI*0.5){
+            camera.rotation.x=Math.PI*0.5;
+        }
+        else if(camera.rotation.x<-Math.PI*0.5){
+            camera.rotation.x=-Math.PI*0.5;
+        }
+    }
+})
