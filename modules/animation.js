@@ -33,7 +33,7 @@ function restart(){
 function animate(){
     //camera
     camera.position.x=character.x;
-    camera.position.y=character.y+230;
+    camera.position.y=character.y+700;
     camera.position.z=character.z+777;
 
     //time & fps
@@ -57,8 +57,12 @@ function animate(){
     aniBackground();
     aniBlocks();
     raycast();
-    //renderer.render(scene,camera);
-    composer.render();
+    if(EpostProcessing.checked){
+        composer.render();
+    }
+    else{
+        renderer.render(scene,camera);
+    }
     if(paused==false){
         requestAnimationFrame(animate);
     }

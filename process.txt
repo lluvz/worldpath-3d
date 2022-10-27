@@ -1,13 +1,17 @@
-1.  there is one more thing to solve: the fullscreen problem on iPad.
-    maybe using webkitRequestfullscreen will solve it.--partly solved
-    lacking a refresh button.--solved
-2.  Click cancel but there's no change.--solved
-3.  clean up the w,h & s.
-4.  prevent default right click is added.
+1.  clean up the w,h & s.
     if three.js has its own way, this has to be removed.
-5.  Now let's get even more modlarizational.
-    Let the background sky(maybe alone with the lanscapes) canvas getting into a texture package.
-6.  Problem: cannot change input text style.--solved
-7.  Problem: fps checkbox auto.
-8.  Make settings a adding function?
-9.  New findings: scaling will change pivot. 
+2.  Problem: fps checkbox auto.
+3.  Make settings a adding function?
+
+Mission:
+1.3d background.
+2.raycast which need to written in every face.
+3.shadow problem.
+4.dark cave problem can be partly solved by lowering ambient light.
+
+Conclusions:
+2.  Soft rasterization:
+3.  Raycast is calculated in CPU!(On the vertix array).
+4.  CPU cannot go through all the blocks in a few seconds, GPU cannot either.
+    This calculation being done asychronosly is a need, and when the blocks changed,
+    only the vertices of the changed blocks should be changed.

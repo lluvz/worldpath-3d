@@ -91,6 +91,8 @@ vconsoleSetting.onclick=function(){
         vconsole=null;
     }
 }
+//post processing switch
+let EpostProcessing=document.getElementById('postProcessing');
 
 //help
 let help=true;
@@ -130,8 +132,6 @@ cancelPlay.onclick=function(){
     playButton.style.display='block';
 }
 newGame.onclick=function(){
-    initBlocks();
-    drawBlocks();
     playOption.style.display='none';
     playContainer.style.display='none';
 }

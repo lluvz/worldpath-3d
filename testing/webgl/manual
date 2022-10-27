@@ -1,0 +1,1 @@
+The engine uses soft rasterization built in the fragment shader to render the view directly from an array that contains the type of each block.

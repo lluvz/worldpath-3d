@@ -1,4 +1,5 @@
 let gameLevel='god';
+let characterV=0.3;
 
 let character={
     x:0,

@@ -22,10 +22,14 @@ composer.addPass(bloomPass)
 const geometry = new THREE.BoxGeometry( 70, 70, 70 );
 const material = new THREE.MeshStandardMaterial( { color: 0xffffff} );
 const cube = new THREE.Mesh( geometry, material );
+cube.castShadow=cube.receiveShadow=true;
 scene.add( cube );
+cube.position.x=90;
+cube.position.y=0;
 
-camera.position.z=777;
-camera.position.y=230;
+//3d texture
+let plane=new THREE.PlaneGeometry(30,30);
+
 
 //size adjustment
 window.onresize=function(){
