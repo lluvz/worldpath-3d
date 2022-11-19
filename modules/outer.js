@@ -33,13 +33,19 @@ let icons={
 
 //fullscreen
 let fullscreen=false;
+if(document.body.requestFullscreen==undefined){
+    document.body.requestFullscreen=document.body.webkitRequestFullscreen;
+}
+if(document.exitFullscreen==undefined){
+    document.exitFullscreen=document.webkitExitFullscreen;
+}
 function fs(){
     if(fullscreen==false){
-        document.body.webkitRequestFullscreen();
+        document.body.requestFullscreen();
         fullscreen=true;
     }
     else{
-        document.webkitExitFullscreen();
+        document.exitFullscreen();
         fullscreen=false;
     }
 }

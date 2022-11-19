@@ -9,6 +9,7 @@ let dt;
 let fps;
 let totalTime=0;
 let realTimePerDay=1;//unite: minite
+let dday;
 let day;
 let hour;
 let minite;
@@ -33,8 +34,8 @@ function restart(){
 function animate(){
     //camera
     camera.position.x=character.x;
-    camera.position.y=character.y+700;
-    camera.position.z=character.z+777;
+    camera.position.y=character.y;
+    camera.position.z=character.z;
 
     //time & fps
     //dt
@@ -53,8 +54,10 @@ function animate(){
     timeElement.innerHTML='Time: '+parseInt(day)+'d '+parseInt(hour)+':'+parseInt(minite)+':'+parseInt(second);
 
     //animations
-    characterMovement();
+    aniHub();
+    aniGeometry();
     aniBackground();
+    characterMovement();
     aniBlocks();
     raycast();
     if(EpostProcessing.checked){

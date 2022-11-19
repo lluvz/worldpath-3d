@@ -4,7 +4,7 @@ const raycaster=new THREE.Raycaster();
 let lineGeometry=new THREE.BufferGeometry();
 let linePosition=new Uint16Array([50,100,50,100,100,50,100,100,100,50,100,100]);
 lineGeometry.setAttribute('position',new THREE.BufferAttribute(linePosition,3,false));
-let lineMaterial=new THREE.LineBasicMaterial({color:new THREE.Color(0xaaaaaa)});
+let lineMaterial=new THREE.LineBasicMaterial({color:new THREE.Color(0xff0000)});
 let blockLine=new THREE.LineLoop(lineGeometry,lineMaterial);
 scene.add(blockLine);
 
@@ -23,17 +23,20 @@ window.addEventListener('pointerdown',function(e){
     pointer.y=-(e.clientY/window.innerHeight)*2+1;
 });
 */
+//test
+let Etest=document.getElementById('test');
 
 function raycast(){
     raycaster.setFromCamera({x:0,y:0},camera);
     intersects=raycaster.intersectObject(blocksMesh);
     if(intersects[0]!=null){
         //show the block pointed at
+        Etest.innerHTML='x:'+pointingX+'--y:'+pointingY+'--z:'+pointingZ;
         let face=intersects[0].face;
         let index=face.a*3;
-        pxo[0]=chunkAttribute.vertex[index];pxo[1]=chunkAttribute.vertex[index+3];pxo[2]=chunkAttribute.vertex[index+6];
-        pyo[0]=chunkAttribute.vertex[index+1];pyo[1]=chunkAttribute.vertex[index+4];pyo[2]=chunkAttribute.vertex[index+7];
-        pzo[0]=chunkAttribute.vertex[index+2];pzo[1]=chunkAttribute.vertex[index+5];pzo[2]=chunkAttribute.vertex[index+8];
+        pxo[0]=positionView[index];pxo[1]=positionView[index+3];pxo[2]=positionView[index+6];
+        pyo[0]=positionView[index+1];pyo[1]=positionView[index+4];pyo[2]=positionView[index+7];
+        pzo[0]=positionView[index+2];pzo[1]=positionView[index+5];pzo[2]=positionView[index+8];
         if(pxo[0]==pxo[1]&&pxo[0]==pxo[2]){
             find2(pyo,py);find2(pzo,pz);
             for(let i=0;i<12;i+=3){
@@ -62,76 +65,76 @@ function raycast(){
         //get index of the block pointed at
         if(face.normal.x=-1){
             if(face.a%6<3){
-                pointingX=chunkAttribute.vertex[index]/blockSize;
-                pointingY=chunkAttribute.vertex[index+1]/blockSize;
-                pointingZ=chunkAttribute.vertex[index+2]/blockSize;
+                pointingX=positionView[index]/blockSize;
+                pointingY=positionView[index+1]/blockSize;
+                pointingZ=positionView[index+2]/blockSize;
             }
             else{
-                pointingX=chunkAttribute.vertex[index]/blockSize;
-                pointingY=chunkAttribute.vertex[index+1]/blockSize-1;
-                pointingZ=chunkAttribute.vertex[index+2]/blockSize;
+                pointingX=positionView[index]/blockSize;
+                pointingY=positionView[index+1]/blockSize-1;
+                pointingZ=positionView[index+2]/blockSize;
     
             }
         }
         else if(face.normal.x=1){
             if(face.a%6<3){
-                pointingX=chunkAttribute.vertex[index]/blockSize-1;
-                pointingY=chunkAttribute.vertex[index+1]/blockSize;
-                pointingZ=chunkAttribute.vertex[index+2]/blockSize-1;
+                pointingX=positionView[index]/blockSize-1;
+                pointingY=positionView[index+1]/blockSize;
+                pointingZ=positionView[index+2]/blockSize-1;
                 
             }
             else{
-                pointingX=chunkAttribute.vertex[index]/blockSize-1;
-                pointingY=chunkAttribute.vertex[index+1]/blockSize-1;
-                pointingZ=chunkAttribute.vertex[index+2]/blockSize-1;
+                pointingX=positionView[index]/blockSize-1;
+                pointingY=positionView[index+1]/blockSize-1;
+                pointingZ=positionView[index+2]/blockSize-1;
             }
         }
         else if(face.normal.y=-1){
             if(face.a%6<3){
-                pointingX=chunkAttribute.vertex[index]/blockSize;
-                pointingY=chunkAttribute.vertex[index+1]/blockSize;
-                pointingZ=chunkAttribute.vertex[index+2]/blockSize;
+                pointingX=positionView[index]/blockSize;
+                pointingY=positionView[index+1]/blockSize;
+                pointingZ=positionView[index+2]/blockSize;
             }
             else{
-                pointingX=chunkAttribute.vertex[index]/blockSize-1;
-                pointingY=chunkAttribute.vertex[index+1]/blockSize;
-                pointingZ=chunkAttribute.vertex[index+2]/blockSize-1;
+                pointingX=positionView[index]/blockSize-1;
+                pointingY=positionView[index+1]/blockSize;
+                pointingZ=positionView[index+2]/blockSize-1;
             }
         }
         else if(face.normal.y=1){
             if(face.a%6<3){
-                pointingX=chunkAttribute.vertex[index]/blockSize;
-                pointingY=chunkAttribute.vertex[index+1]/blockSize-1;
-                pointingZ=chunkAttribute.vertex[index+2]/blockSize-1;
+                pointingX=positionView[index]/blockSize;
+                pointingY=positionView[index+1]/blockSize-1;
+                pointingZ=positionView[index+2]/blockSize-1;
             }
             else{
-                pointingX=chunkAttribute.vertex[index]/blockSize;
-                pointingY=chunkAttribute.vertex[index+1]/blockSize-1;
-                pointingZ=chunkAttribute.vertex[index+2]/blockSize;
+                pointingX=positionView[index]/blockSize;
+                pointingY=positionView[index+1]/blockSize-1;
+                pointingZ=positionView[index+2]/blockSize;
             }
         }
         else if(face.normal.z=-1){
             if(face.a%6<3){
-                pointingX=chunkAttribute.vertex[index]/blockSize-1;
-                pointingY=chunkAttribute.vertex[index+1]/blockSize;
-                pointingZ=chunkAttribute.vertex[index+2]/blockSize;
+                pointingX=positionView[index]/blockSize-1;
+                pointingY=positionView[index+1]/blockSize;
+                pointingZ=positionView[index+2]/blockSize;
             }
             else{
-                pointingX=chunkAttribute.vertex[index]/blockSize-1;
-                pointingY=chunkAttribute.vertex[index+1]/blockSize-1;
-                pointingZ=chunkAttribute.vertex[index+2]/blockSize;
+                pointingX=positionView[index]/blockSize-1;
+                pointingY=positionView[index+1]/blockSize-1;
+                pointingZ=positionView[index+2]/blockSize;
             }
         }
         else if(face.normal.z=1){
             if(face.a%6<3){
-                pointingX=chunkAttribute.vertex[index]/blockSize;
-                pointingY=chunkAttribute.vertex[index+1]/blockSize;
-                pointingZ=chunkAttribute.vertex[index+2]/blockSize-1;
+                pointingX=positionView[index]/blockSize;
+                pointingY=positionView[index+1]/blockSize;
+                pointingZ=positionView[index+2]/blockSize-1;
             }
             else{
-                pointingX=chunkAttribute.vertex[index]/blockSize;
-                pointingY=chunkAttribute.vertex[index+1]/blockSize-1;
-                pointingZ=chunkAttribute.vertex[index+2]/blockSize-1;
+                pointingX=positionView[index]/blockSize;
+                pointingY=positionView[index+1]/blockSize-1;
+                pointingZ=positionView[index+2]/blockSize-1;
             }
         }
         pointingIndex=pointingX+pointingY*area+pointingZ*cacheX;
@@ -150,13 +153,18 @@ function find2(array,result){
 }
 //mouse rotating the view
 let mouseSpeed=0.001;
-renderer.domElement.addEventListener('mousedown',function(){
+Ehub.addEventListener('mousedown',function(){
     if(document.pointerLockElement==null){
-        renderer.domElement.requestPointerLock();
+        Ehub.requestPointerLock();
+        playContainer.style.display='none';
         //destroy block
     }
+    else{
+        blocksTypes[pointingIndex]=0;
+        attributeLoader();
+    }
 })
-renderer.domElement.addEventListener('mousemove',function(e){
+Ehub.addEventListener('mousemove',function(e){
     if(document.pointerLockElement!==null){
         camera.rotation.y -= e.movementX*mouseSpeed;
         camera.rotation.x -= e.movementY*mouseSpeed;

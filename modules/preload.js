@@ -16,3 +16,5 @@ let iconSrc={
 
 //blocks
 let blockTest=loader.load("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAECAMAAACjvQ8qAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAADlQTFRF////t7e3ioqKm5ubYGBgkZGRoqKiRERExcXFQkJC1dXVWVlZWlpaR0dHgoKCQUFBc3NzZ2dn3d3dJc3V4wAAADBJREFUeJyVyccNACEAxECT05Gu/2JZSsDSvAzPGbHixEuQeEfKUCq0D/qAuWD/cAAKHwCswk4nVAAAAABJRU5ErkJggg==")
+blockTest.magFilter=THREE.NearestFilter;
+blockTest.mapping=THREE.EquirectangularReflectionMapping;

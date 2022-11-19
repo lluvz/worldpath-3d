@@ -5,9 +5,11 @@
 
 Mission:
 1.3d background.
-2.raycast which need to written in every face.
+2.raycast bug need to be fixed.
 3.shadow problem.
 4.dark cave problem can be partly solved by lowering ambient light.
+5.mobile operation need to be added.
+6.check out whether service worker can be a server to other players.
 
 Conclusions:
 2.  Soft rasterization:

@@ -1,48 +1,52 @@
 let blocks={};
-let cacheX=8;
+let cacheX=64;
 let cacheY=128;
-let cacheZ=8;
+let cacheZ=64;
 let area=cacheX*cacheZ;
 let volume=area*cacheY;
 let blockSize=30;
 //initiate
 let totalBlockTypes=1;
 totalBlockTypes*=6;
-let chunkMesh=new THREE.BufferGeometry();
-let chunkTypes=initChunk();
-let chunkAttribute=attributeLoader(chunkTypes);
-let vertexAttribute=new THREE.BufferAttribute(chunkAttribute.vertex,3,0);
-let uvAttribute=new THREE.BufferAttribute(chunkAttribute.uv,2,0)
-let normalAttribute=new THREE.BufferAttribute(chunkAttribute.normals,3,0);
-chunkMesh.setAttribute('position',vertexAttribute);
-chunkMesh.setAttribute('uv',uvAttribute);
-chunkMesh.setAttribute('normal',normalAttribute);
+//let positionMemory,uvMemory,normalMemory;
+//let surfaceCursor;
+let positionView,uvView,normalView;
+let blocksTypes=initTypes();
+let blocksGeometry=new THREE.BufferGeometry();
+let vertexAttribute
+let uvAttribute
+let normalAttribute
+attributeLoader();
+/*
+uvAttribute.count=surfaceCursor*6;
+normalAttribute.count=surfaceCursor*6;
+vertexAttribute.count=surfaceCursor*6;
+ */
 let blocksMaterial=new THREE.MeshStandardMaterial({map:blockTest});
-let blocksMesh=new THREE.Mesh(chunkMesh,blocksMaterial);
-chunkMesh.scale(blockSize,blockSize,blockSize);
+let blocksMesh=new THREE.Mesh(blocksGeometry,blocksMaterial);
 blocksMesh.castShadow=blocksMesh.receiveShadow=true;
 scene.add(blocksMesh);
-function initChunk(){
+function initTypes(){
     let chunkTypeBuffer=new ArrayBuffer(volume*2);
-    let chunkTypes=new Uint16Array(chunkTypeBuffer);
+    let blocksTypes=new Uint16Array(chunkTypeBuffer);
     for(let x=0;x<cacheX;x++){
         for(let y=0;y<cacheY;y++){
             for(let z=0;z<cacheZ;z++){
                 if(y<15){
-                    chunkTypes[y*area+z*cacheX+x]=1;
+                    blocksTypes[y*area+z*cacheX+x]=1;
                 }
                 else if(y==15 && Math.round(Math.random())){
-                    chunkTypes[y*area+z*cacheX+x]=1;
+                    blocksTypes[y*area+z*cacheX+x]=1;
                 }
                 else{
-                    chunkTypes[y*area+z*cacheX+x]=0;
+                    blocksTypes[y*area+z*cacheX+x]=0;
                 }
             }
         }
     }
-    return chunkTypes;
+    return blocksTypes;
 }
-function attributeLoader(chunkTypes){
+function attributeGenerate(){
     let buffer=[];
     let uv=[];
     let normals=[];
@@ -55,9 +59,9 @@ function attributeLoader(chunkTypes){
     for(let y=1;y<fy;y++){
         for(let z=1;z<fz;z++){
             for(let x=1;x<fx;x++){
-                if(chunkTypes[index]){
-                    trueType=chunkTypes[index]-1;
-                    if(!chunkTypes[index-1]){
+                if(blocksTypes[index]){
+                    trueType=blocksTypes[index]-1;
+                    if(!blocksTypes[index-1]){
                         buffer.push(x);buffer.push(y);buffer.push(z);buffer.push(x);buffer.push(y);buffer.push(z+1);buffer.push(x);buffer.push(y+1);buffer.push(z);
                         buffer.push(x);buffer.push(y+1);buffer.push(z);buffer.push(x);buffer.push(y);buffer.push(z+1);buffer.push(x);buffer.push(y+1);buffer.push(z+1);
                         reapedUvCoord1=(trueType+3)/totalBlockTypes;
@@ -72,7 +76,7 @@ function attributeLoader(chunkTypes){
                             normals.push(-1);normals.push(0);normals.push(0);
                         }
                     }
-                    if(!chunkTypes[index+1]){
+                    if(!blocksTypes[index+1]){
                         buffer.push(x+1);buffer.push(y);buffer.push(z+1);buffer.push(x+1);buffer.push(y);buffer.push(z);buffer.push(x+1);buffer.push(y+1);buffer.push(z+1);
                         buffer.push(x+1);buffer.push(y+1);buffer.push(z+1);buffer.push(x+1);buffer.push(y);buffer.push(z);buffer.push(x+1);buffer.push(y+1);buffer.push(z);
                         reapedUvCoord1=(trueType+1)/totalBlockTypes;
@@ -87,7 +91,7 @@ function attributeLoader(chunkTypes){
                             normals.push(1);normals.push(0);normals.push(0);
                         }
                     }
-                    if(!chunkTypes[index-cacheX]){
+                    if(!blocksTypes[index-cacheX]){
                         buffer.push(x+1);buffer.push(y);buffer.push(z);buffer.push(x);buffer.push(y);buffer.push(z);buffer.push(x+1);buffer.push(y+1);buffer.push(z);
                         buffer.push(x+1);buffer.push(y+1);buffer.push(z);buffer.push(x);buffer.push(y);buffer.push(z);buffer.push(x);buffer.push(y+1);buffer.push(z);
                         reapedUvCoord1=(trueType+2)/totalBlockTypes;
@@ -102,7 +106,7 @@ function attributeLoader(chunkTypes){
                             normals.push(0);normals.push(0);normals.push(-1);
                         }
                     }
-                    if(!chunkTypes[index+cacheX]){
+                    if(!blocksTypes[index+cacheX]){
                         buffer.push(x);buffer.push(y);buffer.push(z+1);buffer.push(x+1);buffer.push(y);buffer.push(z+1);buffer.push(x);buffer.push(y+1);buffer.push(z+1);
                         buffer.push(x);buffer.push(y+1);buffer.push(z+1);buffer.push(x+1);buffer.push(y);buffer.push(z+1);buffer.push(x+1);buffer.push(y+1);buffer.push(z+1);
                         reapedUvCoord1=trueType/totalBlockTypes;
@@ -117,7 +121,7 @@ function attributeLoader(chunkTypes){
                             normals.push(0);normals.push(0);normals.push(1);
                         }
                     }
-                    if(!chunkTypes[index-area]){
+                    if(!blocksTypes[index-area]){
                         buffer.push(x);buffer.push(y);buffer.push(z);buffer.push(x+1);buffer.push(y);buffer.push(z);buffer.push(x);buffer.push(y);buffer.push(z+1);
                         buffer.push(x);buffer.push(y);buffer.push(z+1);buffer.push(x+1);buffer.push(y);buffer.push(z);buffer.push(x+1);buffer.push(y);buffer.push(z+1);
                         reapedUvCoord1=(trueType+4)/totalBlockTypes;
@@ -132,7 +136,7 @@ function attributeLoader(chunkTypes){
                             normals.push(0);normals.push(-1);normals.push(0);
                         }
                     }
-                    if(!chunkTypes[index+area]){
+                    if(!blocksTypes[index+area]){
                         buffer.push(x);buffer.push(y+1);buffer.push(z+1);buffer.push(x+1);buffer.push(y+1);buffer.push(z+1);buffer.push(x);buffer.push(y+1);buffer.push(z);
                         buffer.push(x);buffer.push(y+1);buffer.push(z);buffer.push(x+1);buffer.push(y+1);buffer.push(z+1);buffer.push(x+1);buffer.push(y+1);buffer.push(z);
                         reapedUvCoord1=(trueType+5)/totalBlockTypes;
@@ -154,7 +158,37 @@ function attributeLoader(chunkTypes){
         }
         index+=cache2X;
     }
-    return {vertex:new Uint16Array(buffer),uv:new Float32Array(uv),normals:new Int8Array(normals)};
+    return {position:buffer,uv:uv,normals:normals}
+}
+function attributeLoader(){
+    let attributes=attributeGenerate();
+    /*
+    surfaceCursor=attributes.position.length/18;
+    positionMemory=new WebAssembly.Memory({initial:Math.ceil(attributes.position.length*2/64/1024),maximum:Math.ceil(volume*6*6*3/64/1024)});
+    uvMemory=new WebAssembly.Memory({initial:Math.ceil(attributes.uv.length*4/64/1024),maximum:Math.ceil(volume*6*6*2*2/64/1024)});
+    normalMemory=new WebAssembly.Memory({initial:Math.ceil(attributes.normals.length/64/1024),maximum:Math.ceil(volume*6*6*3/2/64/1024)});
+    positionView=new Uint16Array(positionMemory.buffer);
+    uvView=new Float32Array(uvMemory.buffer);
+    normalView=new Int8Array(normalMemory.buffer);
+    positionView.set(attributes.position);
+    uvView.set(attributes.uv);
+    normalView.set(attributes.normals);
+    */
+    normalView=new Int8Array(attributes.normals);
+    positionView=new Uint16Array(attributes.position);
+    for(let i=0;i<positionView.length;i++){
+        positionView[i]*=blockSize;
+    }
+    uvView=new Float32Array(attributes.uv);
+    vertexAttribute=new THREE.BufferAttribute(positionView,3,0);
+    uvAttribute=new THREE.BufferAttribute(uvView,2,0)
+    normalAttribute=new THREE.BufferAttribute(normalView,3,0);
+    blocksGeometry.deleteAttribute('uv');
+    blocksGeometry.deleteAttribute('position');
+    blocksGeometry.deleteAttribute('normal');
+    blocksGeometry.setAttribute('uv',uvAttribute);
+    blocksGeometry.setAttribute('normal',normalAttribute);
+    blocksGeometry.setAttribute('position',vertexAttribute);
 }
 /*
 function initBlocks(){

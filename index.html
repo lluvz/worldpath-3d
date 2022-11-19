@@ -6,6 +6,8 @@
     <link rel='stylesheet' href='modules/outer.css'>
 </head>
 <body>
+    <canvas id="hub"></canvas>
+
     <p id="test" style="position:fixed;color:aliceblue;left:47vw">test</p>
 
     <div id="playContainer">
@@ -54,17 +56,12 @@
         <p id="fps" class="dataText"></p>
         <br>
         <p id="time" class="dataText"></p>
+        <p id="worldPosition" class="dataText"></p>
     </div>
     <div id="mobileButton">
         <button id="moveButton" class="mobileButton">&#8656&#8597&#8658</button>
     </div>
-
-    <!--HUB-->
-    <p id="pointer" style="position:fixed;left:48.5vw;top:48.5vh;margin:0px;border:0px;font-size:3vw;color:lightblue">+</p>
-
     <script src='libraries/vconsole.min.js'></script>
-    <!--<script src="libraries/babylon.js"></script>-->
-    <!--<script src="libraries/pixi.js"></script>-->
     <script src="libraries/three.js"></script>
     <script src="libraries/gpu-browser.js"></script>
 
@@ -84,7 +81,13 @@
     <!---->
     
     <script src="modules/preload.js"></script>
+    <!--test-->
+    <script src="modules/imageTest.js"></script>
+    <!---->
+    <script src="modules/photoGenerate.js"></script>
+    <script src="modules/geography.js"></script>
     <script src='modules/outer.js'></script>
+    <script src="modules/hub.js"></script>
     <script src="modules/canvasSetup.js"></script>
     <script src="modules/blocks.js"></script>
     <script src="modules/background.js"></script>
